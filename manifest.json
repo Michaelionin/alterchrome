@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "AlterChrome",
+  "version": "1.0.0",
+  "description": "Markdown viewer with ACS-1 support and forced UTF-8 decoding for Chromium browsers.",
+  // permissions: ["activeTab"] обычно не требуется для matches в MV3
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*",
+        "file:///*" // Поддержка локальных файлов, как и в Firefox
+      ],
+      // Используем js и css для фильтрации внутри скрипта
+      "js": ["showdown.min.js", "alterchrome.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
